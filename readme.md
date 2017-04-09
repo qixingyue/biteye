@@ -1,5 +1,6 @@
 
 * logo:
+
 static/text_icon.png
 
 * static_root
