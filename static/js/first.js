@@ -54,6 +54,10 @@ window_export('usecss',function( names , is_theme = false){
   }
 });
 
+window_export('jsimage',function(name){
+  document.write('<image src="' + static_root + 'img/' + name + '"/>');
+});
+
 window_export('static_dir',function(static_dir){
   static_root = static_dir;
 });
