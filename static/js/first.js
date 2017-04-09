@@ -12,7 +12,7 @@ var config = {
 };
 
 var loaded_js = {} , loaded_css = {};
-var static_root = '/static/';
+var static_root = '../static/';
 
 window_export('config',config);
 
