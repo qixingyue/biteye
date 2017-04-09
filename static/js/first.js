@@ -12,13 +12,14 @@ var config = {
 };
 
 var loaded_js = {} , loaded_css = {};
+var static_root = '/static/';
 
 window_export('config',config);
 
 window_export('usejs',function( names , is_theme = false){
-  var path = '/static/js/';
+  var path = static_root + 'js/';
   if(is_theme){
-    path = '/static/bootstrap/js/';
+    path = static_root + 'bootstrap/js/';
   }
   if(typeof names == "string"){
     names = names.split("|");
@@ -35,9 +36,9 @@ window_export('usejs',function( names , is_theme = false){
 });
 
 window_export('usecss',function( names , is_theme = false){
-  var path = '/static/css/';
+  var path = static_root + 'css/';
   if(is_theme){
-    path = '/static/bootstrap/css/';
+    path = static_root + 'bootstrap/css/';
   }
   if(typeof names == "string"){
     names = names.split("|");
@@ -51,6 +52,10 @@ window_export('usecss',function( names , is_theme = false){
         loaded_css[name] = is_theme;
     }
   }
+});
+
+window_export('static_dir',function(static_dir){
+  static_root = static_dir;
 });
 
 })();
