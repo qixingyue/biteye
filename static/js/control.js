@@ -26,7 +26,8 @@ var control = {
           text:config.modules[m].name,
           cssclass: module == m ? 'active' : ''
         };
-        jsecho("<li class='{cssclass}'><a href='?m={name}'><span class='fa fa-th-large fa-fw'></span> {text}</a></li>",params);
+        //jsecho("<li class='{cssclass}'><a href='?m={name}'><span class='fa fa-th-large fa-fw'></span> {text}</a></li>",params);
+        jsecho("<li class='{cssclass}'><a href='?m={name}'>{text}</a></li>",params);
       }
   }
   
