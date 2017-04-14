@@ -26,7 +26,9 @@ var app = {
       this._queryArr = this.queryArr();
   }
 
-
+  ,logout:function(){
+      location.href = "login.html";  
+  }
 
 };
 app.init();
