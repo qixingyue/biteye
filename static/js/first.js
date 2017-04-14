@@ -4,23 +4,19 @@ window.window_export = function(name,fn){
   window[name] = fn;
 };
 
-
-var config = {
-  'api':{
-      'login':'/api/login.json'
+function spath(type,is_theme=false){
+  var path = static_root + type;
+  if(is_theme){
+    path = static_root + 'bootstrap/' + type;
   }
-};
+  return path;
+}
 
 var loaded_js = {} , loaded_css = {};
-var static_root = '../static/';
-
-window_export('config',config);
+static_root = '../static/';
 
 window_export('usejs',function( names , is_theme = false){
-  var path = static_root + 'js/';
-  if(is_theme){
-    path = static_root + 'bootstrap/js/';
-  }
+  var path = spath('js/',is_theme);
   if(typeof names == "string"){
     names = names.split("|");
   } 
@@ -36,10 +32,7 @@ window_export('usejs',function( names , is_theme = false){
 });
 
 window_export('usecss',function( names , is_theme = false){
-  var path = static_root + 'css/';
-  if(is_theme){
-    path = static_root + 'bootstrap/css/';
-  }
+  var path = spath('css/',is_theme);
   if(typeof names == "string"){
     names = names.split("|");
   } 
@@ -52,10 +45,6 @@ window_export('usecss',function( names , is_theme = false){
         loaded_css[name] = is_theme;
     }
   }
-});
-
-window_export('jsimage',function(name){
-  document.write('<image src="' + static_root + 'img/' + name + '"/>');
 });
 
 window_export('static_dir',function(static_dir){
