@@ -25,9 +25,11 @@ usejs("config|app|control|basic");
     <div class="container-fluid">
     
       <div class="navbar-header">
-        <a class="navbar-brand" href="/">
-          <script type="text/javascript">control.jsimage('text_icon.png');</script>
-        </a>
+        <div style="width:134px">
+            <a class="navbar-brand" href="/">
+              <script type="text/javascript">control.jsimage('text_icon.png');</script>
+            </a>
+        </div>
       </div>
     
       <ul class="nav navbar-nav topmenu" >
@@ -40,7 +42,7 @@ usejs("config|app|control|basic");
       
           <ul class="dropdown-menu" role="menu">
             <li class="divider"></li>
-            <li><a href="/logout">退出</a></li>
+            <li><a id="logout" href="javascript:;">退出</a></li>
           </ul>
       
         </li>
@@ -69,6 +71,9 @@ usejs("config|app|control|basic");
           <li> <a href="/"><i class="fa fa-home fa-fw"></i> 首页</a> </li>
           <li class="active">关于</li>
         </ul>
+
+        <script> basic.bread() ;</script>
+        <script> basic.info() ;</script>
 
         <!-- one long text , when you click show all text!-->
         <div style="margin-left:10px;margin-bottom:20px;">
