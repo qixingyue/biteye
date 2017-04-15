@@ -47,6 +47,38 @@ var control = {
       }
   }
 
+  ,infoPage:function(message){
+       var tpl =  '<div class="alert alert-block alert-info">'
+          + '<button type="button" class="close" data-dismiss="alert">'
+          + '<i class="icon-remove"></i>'
+          + '</button>'
+          + '<i class="icon-ok green"></i>{message}'
+        +'</div>';
+        document.write(tplstr(tpl,{'message':message}))
+  }
+
+  ,bread:function(){
+      var bread_item = function(n,m,a='about'){
+          var params = {
+              'name':n
+                  ,'link':'?m=' + m + '&a=' + a
+          };
+          return tplstr('<li> <a href="{link}">{name}</a> </li>',params);
+      }
+
+
+      var module_link = app._queryArr['m'] || 'index';
+      var module_name = config.modules[module_link].name;
+      var action = app._queryArr['a'] || 'about';
+      var action_name = config.modules[module_link].sub_menus[action];
+      var html = '<ul class="breadcrumb">';
+      html += '<li> <a href="/"><i class="fa fa-home fa-fw"></i> 首页</a> </li>';
+      html += bread_item(module_name,module_link);
+      html += bread_item(module_name,module_link,action_name);
+      html += '</ul>';
+      return html;
+  }
+
 };
 
 window_export("control",control);
