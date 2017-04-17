@@ -1,4 +1,9 @@
 
+* api server:
+
+default api server run at localhost:8080 
+python api/api.py
+
 * logo:
 
 static/text_icon.png
