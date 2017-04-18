@@ -9,19 +9,37 @@ var basic = {
       $("#logout").click(app.logout);
   }
 
-  ,info:function(){
-  
+  ,pageContent:function(){
+      var page_config = app._pageConfig;
+      //渲染页面的方法,renderPage+type
+      var f = this.getPageRenderMethod(page_config.type);
+      if(f){
+           f(page_config);
+      }
+      
   }
 
-  ,bread:function(){
-  
+  ,getPageRenderMethod(type){
+      var m = 'renderPage' + type;
+      if(this[m]){
+        return this[m]; 
+      }
+  }
+
+  ,renderPageinfo(config){
+    control.infoPage(config.message); 
   }
 
 };
  
-basic.init();
-$(basic.onLoad)
+if(app.cookie.get("token") == null){
+    window.location.href = "login.html";
+    app.logined = false;
+} else {
+    basic.init();
+    $(basic.onLoad)
+    window_export('basic',basic);
+}
 
-window_export('basic',basic);
 
 })();

@@ -21,6 +21,7 @@ var control = {
   ,module_menu:function(){
       var module = app._queryArr['m'] || 'index';
       for(var m in config.modules){
+        if(m == 'index') continue;
         var params = {
           name:m,
           text:config.modules[m].name,
@@ -59,6 +60,9 @@ var control = {
 
   ,bread:function(){
       var bread_item = function(n,m,a='about'){
+          if(n == null){
+            return ''; 
+          }
           var params = {
               'name':n
                   ,'link':'?m=' + m + '&a=' + a
@@ -72,11 +76,23 @@ var control = {
       var action = app._queryArr['a'] || 'about';
       var action_name = config.modules[module_link].sub_menus[action];
       var html = '<ul class="breadcrumb">';
-      html += '<li> <a href="/"><i class="fa fa-home fa-fw"></i> 首页</a> </li>';
+      html += '<li> <a href="' + config.home_page + '"><i class="fa fa-home fa-fw"></i> 首页</a> </li>';
       html += bread_item(module_name,module_link);
-      html += bread_item(module_name,module_link,action_name);
+      html += bread_item(action_name,module_link,action);
       html += '</ul>';
-      return html;
+      document.write(html);
+  }
+
+  ,searchForm:function(params){
+  
+  }
+
+  ,dataTable:function(){
+  
+  }
+
+  ,loginUser:function(){
+      document.write(app.cookie.get("user"));
   }
 
 };
