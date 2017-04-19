@@ -58,6 +58,58 @@ var control = {
         document.write(tplstr(tpl,{'message':message}))
   }
 
+  ,form_item:function(config){
+      switch(config.type){
+
+          case 'txt':
+              return '<input class="form-control m5" type="text" name="' + config.name 
+                  + '" placeholder = "' + config.placeholder + '"/>';
+                  
+          
+      }
+  }
+
+  ,queryPage:function(forms){
+      var me = this;
+      var html = ' <div id="search_panel" class="well well-sm content-filter"> <form id="sForm" action="" method="" class="form-inline" name="form" id="form">'; 
+
+      for(var i = 0 , j = forms.length ; i < j ; i++){
+          html += me.form_item(forms[i]) ;
+      }
+
+      html += '<button id="submit" type="button" class="btn btn-sm btn-success" >搜索</button>';
+      html += '</form></div>';
+      var blankTable = '<div id="dataShow"></div>';
+      html += blankTable;
+      document.write(html);
+  }
+
+  ,showData:function(data,config){
+      $("#dataShow").html("");
+      var data = data || [];
+      var table_html = '<table class="table table-striped table-hover table-condensed "><thead>';
+      for(var i in config.leg){
+          var l = config.leg[i];
+          table_html += '<th>' + l +'</th>';
+      }
+      table_html += '</thead>';
+      for(var i = 0 , j = data.length ; i < j ; i++ ){
+          var item = data[i];
+          table_html += '<tr>';
+          for(var m in config.leg){
+              var l = config.leg[m];
+              table_html += '<td>' + item[l] +'</td>';
+          }
+          table_html += '</tr>';
+      }
+      // debugger;
+      table_html += '</table>';
+      $("#dataShow").html(table_html);
+      $("#dataShow table").dataTable();
+      
+      
+  }
+
   ,bread:function(){
       var bread_item = function(n,m,a='about'){
           if(n == null){
@@ -81,14 +133,6 @@ var control = {
       html += bread_item(action_name,module_link,action);
       html += '</ul>';
       document.write(html);
-  }
-
-  ,searchForm:function(params){
-  
-  }
-
-  ,dataTable:function(){
-  
   }
 
   ,loginUser:function(){

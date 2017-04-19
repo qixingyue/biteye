@@ -37,8 +37,12 @@ var config = {
       }
       ,sample_V_query:{
           type:'query'
-          ,forms:[],
-          leg:[]
+          ,forms:[
+            { type:'txt', name:'name',placeholder:'name' }
+            ,{ type:'txt', name:'value',placeholder:'value' }
+          ]
+          ,leg:['name','value']
+          ,api:wrapper('sample/query')
       }
       ,sample_V_create:{
           type:'create'

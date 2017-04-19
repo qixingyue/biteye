@@ -14,7 +14,7 @@ var basic = {
       //渲染页面的方法,renderPage+type
       var f = this.getPageRenderMethod(page_config.type);
       if(f){
-           f(page_config);
+           f(page_config,this);
       }
       
   }
@@ -26,8 +26,31 @@ var basic = {
       }
   }
 
-  ,renderPageinfo(config){
-    control.infoPage(config.message); 
+  ,renderPageinfo(config,me){
+      control.infoPage(config.message); 
+  }
+
+  ,filterParams:function(params,config){
+    return params; 
+  }
+
+  ,renderPagequery(config,me){
+      control.queryPage(config.forms);
+      $('#submit').click(function(){
+          var params = {};
+          $("#sForm input").each(function(){
+              var name = $(this).attr("name");
+              params[name]  = $(this).val();
+          });
+          params = me.filterParams(params,config);
+          console.log(params);
+          net.querySample(config,params,{ok:function(data){
+              control.showData(data.data,config);
+          }});
+      });
+  }
+  ,renderPagecreate(config){
+  
   }
 
 };
