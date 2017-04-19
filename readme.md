@@ -4,6 +4,10 @@
 default api server run at localhost:8080 
 python api/api.py
 
+* modify static pages running domain 
+
+api/handlers/Base.py client_domain
+
 * api cross domain:
 
 api/handers/Base.py client_domain must be your client domain.
