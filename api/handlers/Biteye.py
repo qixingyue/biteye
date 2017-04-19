@@ -10,12 +10,22 @@ class Sample(Base.RestBaseHandler):
 
     def get(self):
         #self.echo_error("Bad Request!")
-        self.echo_message("This is biteye api server , X !")
+        self.echo_message("This is biteye api server !")
+
+@Base.RestMethod
+class Document(Base.RestBaseHandler):
+
+    __url__ = '/doc'
+
+    def get(self):
+        self.echo_message("Document Page.")
+
 
 @Base.RestMethod
 class Login(Base.RestBaseHandler):
 
     __url__ = '/api/login'
+    __params__ = ['u','p']
 
     def post(self):
         u = self.get_argument('u','')
@@ -28,3 +38,18 @@ class Login(Base.RestBaseHandler):
         else :
             obj = {"login":False,'message':"用户名或密码错误!"}
             self.echo_message(obj)
+
+@Base.RestMethod
+class SampleQuery(Base.RestBaseHandler):
+
+    __url__ = '/sample/query'
+
+    def post(self):
+        d = []
+        for k in range(0,100):
+            item = {'id':k,'name':'name'+str(k),'value':k + 100}
+            d.append(item)
+        i = {'have':True,'data':d}
+        self.echo_message(i)
+
+
