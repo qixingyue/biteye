@@ -2,8 +2,6 @@
 
 var net = {
 
-
-
     login:function(u,p,handlers = {}){
         var url = config.api.login;
         app.post(url,{u:u,p:p},function(data){

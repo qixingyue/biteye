@@ -21,6 +21,7 @@ var config = {
           ,sub_menus:{
              query:'查看' 
              ,create:'创建' 
+             ,charts:'图表' 
           }
       }
       ,settings:{
@@ -38,15 +39,20 @@ var config = {
       ,sample_V_query:{
           type:'query'
           ,forms:[
-            { type:'txt', name:'name',placeholder:'name' }
+            {type:'datetime', name:'from',placeholder:'开始时间',dvalue:'-3day'}
+            ,{ type:'txt', name:'name',placeholder:'name' }
             ,{ type:'txt', name:'value',placeholder:'value' }
           ]
-          ,leg:['name','value']
+          ,leg:['name','user','value']
           ,api:wrapper('sample/query')
       }
       ,sample_V_create:{
           type:'create'
-          ,forms:[]
+          ,forms:[
+            {type:'txt',name:'name',dvalue:'',label:'名称:',placeholder:''} 
+            ,{type:'txt',name:'value',dvalue:'',label:'值:',placeholder:''} 
+            ,{type:'datetime',name:'time',dvalue:'-3day',label:'创建日期:',placeholder:''} 
+          ]
           ,submitBack:'?m=sample&a=query'
       }
   }

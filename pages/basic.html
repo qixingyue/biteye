@@ -15,8 +15,8 @@
 <script type="text/javascript">
 usecss("bootstrap.min|dashboard|font-awesome.min",true);
 usejs("jquery-1.10.2.min|jquery.checkbox|bootstrap.min|auto",true);
-usecss("dataTables.bootstrap.min");
-usejs("config|app|control|basic|jquery.dataTables.min|dataTables.bootstrap.min|net");
+usecss("dataTables.bootstrap.min|jedate");
+usejs("config|app|control|basic|jquery.dataTables.min|dataTables.bootstrap.min|net|jquery.jedate.min");
 </script>
 
 </head>
@@ -58,7 +58,7 @@ usejs("config|app|control|basic|jquery.dataTables.min|dataTables.bootstrap.min|n
     <div class="row">
 
       <!-- left menu -->
-      <div class="col-sm-3 col-md-2 sidebar" >
+      <div class="sidebar" >
         <ul class="nav nav-sidebar">
           <script>control.left_menu();</script>
         </ul>
@@ -66,7 +66,7 @@ usejs("config|app|control|basic|jquery.dataTables.min|dataTables.bootstrap.min|n
       <!-- end left menu -->
 
       <!-- begin page content -->
-      <div id="pagecontent" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
+      <div id="pagecontent" class="main" >
   
          <script> control.bread() ;</script>
          <script> basic.pageContent() ;</script>

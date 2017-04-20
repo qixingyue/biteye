@@ -55,7 +55,7 @@ var control = {
           + '</button>'
           + '<i class="icon-ok green"></i>{message}'
         +'</div>';
-        document.write(tplstr(tpl,{'message':message}))
+        jsecho(tpl,{'message':message});
   }
 
   ,form_item:function(config){
@@ -64,6 +64,10 @@ var control = {
           case 'txt':
               return '<input class="form-control m5" type="text" name="' + config.name 
                   + '" placeholder = "' + config.placeholder + '"/>';
+          case 'datetime':
+              var dvalue = (config.dvalue != null) ? app.time.after(config.dvalue) : app.time.now();
+              return '<input class="form-control m5 datetime" type="text" name="' + config.name 
+                  + '" placeholder = "' + config.placeholder + '" value="' + dvalue + '"/>';
                   
           
       }
@@ -81,13 +85,42 @@ var control = {
       html += '</form></div>';
       var blankTable = '<div id="dataShow"></div>';
       html += blankTable;
-      document.write(html);
+      jsecho(html);
+  }
+
+  ,createPage:function(forms,api='',method='post'){
+      var me = this;
+      var params = {
+          'action' : api
+          ,'method':method
+      };
+      var html = '<form class="form-horizontal mform" action="{action}" method="{method}">{fields}{submit}';
+      html += '</form>';
+
+      var fields_html = '';
+      for(var i = 0 , j = forms.length ; i < j ; i++){
+          var tpl = '<div class="form-group"> '
+                + '<label class="col-sm-2  control-label" for="id-domain">{label}</label> '
+                + '<div class="col-sm-4"> {control}</div> '
+                + '<div class="col-sm-2 "> </div> '
+                + '</div>';
+          var params = {
+            'label':forms[i].label,
+            'control':me.form_item(forms[i])
+          };
+          fields_html += tplstr(tpl,params);
+      }
+      params['fields'] = fields_html;
+      var submit_html = '<div class="form-group"> <div class="col-sm-offset-2 col-sm-4"> <button type="submit" class="btn btn-primary">添加</button> <button type="reset" class="btn">重置</button> </div> </div>';
+      params['submit'] = submit_html;
+
+      jsecho(html,params);
   }
 
   ,showData:function(data,config){
       $("#dataShow").html("");
       var data = data || [];
-      var table_html = '<table class="table table-striped table-hover table-condensed "><thead>';
+      var table_html = '<table class="table table-striped table-hover table-condensed "><thead><th>ID</th>';
       for(var i in config.leg){
           var l = config.leg[i];
           table_html += '<th>' + l +'</th>';
@@ -95,7 +128,7 @@ var control = {
       table_html += '</thead>';
       for(var i = 0 , j = data.length ; i < j ; i++ ){
           var item = data[i];
-          table_html += '<tr>';
+          table_html += '<tr><td>' + (i+1) + '</td>';
           for(var m in config.leg){
               var l = config.leg[m];
               table_html += '<td>' + item[l] +'</td>';
@@ -106,8 +139,6 @@ var control = {
       table_html += '</table>';
       $("#dataShow").html(table_html);
       $("#dataShow table").dataTable();
-      
-      
   }
 
   ,bread:function(){
@@ -132,11 +163,11 @@ var control = {
       html += bread_item(module_name,module_link);
       html += bread_item(action_name,module_link,action);
       html += '</ul>';
-      document.write(html);
+      jsecho(html);
   }
 
   ,loginUser:function(){
-      document.write(app.cookie.get("user"));
+      jsecho(app.cookie.get("user"));
   }
 
 };

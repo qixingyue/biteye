@@ -2,6 +2,9 @@
 
 window.window_export = function(name,fn){
   window[name] = fn;
+  if(fn.onPageLoad != null){
+    $(fn.onPageLoad); 
+  }
 };
 
 function spath(type,is_theme=false){

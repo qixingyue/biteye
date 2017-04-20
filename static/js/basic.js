@@ -5,7 +5,7 @@ var basic = {
   init:function(){
 
   }
-  ,onLoad:function(){
+  ,onPageLoad:function(){
       $("#logout").click(app.logout);
   }
 
@@ -50,7 +50,7 @@ var basic = {
       });
   }
   ,renderPagecreate(config){
-  
+      control.createPage(config.forms,config.api,config.method);
   }
 
 };
@@ -60,7 +60,6 @@ if(app.cookie.get("token") == null){
     app.logined = false;
 } else {
     basic.init();
-    $(basic.onLoad)
     window_export('basic',basic);
 }
 

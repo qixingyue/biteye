@@ -109,8 +109,82 @@ var app = {
   
   }
 
-};
-app.init();
+  ,charts:{
 
+      createPie(data,sel){
+          
+      }
+  
+  }
+
+  ,onPageLoad:function(){
+      if($.fn.jeDate != null) {
+          $("input.datetime").jeDate(); 
+      }
+  }
+
+  ,time:{
+
+      now:function(){
+          var n = new Date(); 
+          return this.formate(n);
+      }
+
+      ,after:function(mi,returnString=true){
+          var r = /(-?)(\d+)([a-z]+)/;
+          var items = mi.match(r);
+          var number = items[2];
+          var diff = 1;
+          switch(items[3]){
+              case 'day':
+                  diff = 86400;
+                  break;
+              case 'minute':
+                  diff = 60;
+                  break;
+              case 'hour':
+                  diff = 3600;
+                  break;
+              case 'week':
+                  diff = 604800;
+                  break;
+          }
+          var x = diff * number * 1000;
+          if(items[1] == '-'){
+              x = -x;
+          } 
+
+          var n = new Date();
+          n.setTime(n.getTime() + x);
+          if(returnString){
+              return this.formate(n);
+          }else {
+              return n; 
+          }
+          
+      }
+
+     ,formate:function(d,fmt = "yyyy-MM-dd hh:mm:ss"){
+         var o = {
+             "M+": d.getMonth() + 1, 
+             "d+": d.getDate(),
+             "h+": d.getHours(),
+             "m+": d.getMinutes(), 
+             "s+": d.getSeconds(),
+             "q+": Math.floor((d.getMonth() + 3) / 3),
+             "S": d.getMilliseconds()
+         };
+         if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (d.getFullYear() + "").substr(4 - RegExp.$1.length));
+         for (var k in o)
+             if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+         return fmt;
+     }
+
+  
+  }
+
+};
+
+app.init();
 window_export("app",app);
 })();
