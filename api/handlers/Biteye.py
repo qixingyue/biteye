@@ -47,7 +47,7 @@ class SampleQuery(Base.RestBaseHandler):
     def post(self):
         d = []
         for k in range(0,100):
-            item = {'id':k,'name':'name'+str(k),'value':k + 100}
+            item = {'id':k,'name':'name'+str(k),'value':k + 100,'user':'biteye'}
             d.append(item)
         i = {'have':True,'data':d}
         self.echo_message(i)
