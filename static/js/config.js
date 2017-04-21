@@ -52,6 +52,8 @@ var config = {
             {type:'txt',name:'name',dvalue:'',label:'名称:',placeholder:''} 
             ,{type:'txt',name:'value',dvalue:'',label:'值:',placeholder:''} 
             ,{type:'datetime',name:'time',dvalue:'-3day',label:'创建日期:',placeholder:''} 
+            ,{type:'textarea',name:'description',dvalue:'',label:'简单描述:',placeholder:''} 
+            ,{type:'select',name:'sel_type',dvalue:'',label:'选择框:',items:{'A':'选项1','B':'选项2'}} 
           ]
           ,submitBack:'?m=sample&a=query'
       }

@@ -68,7 +68,31 @@ var control = {
               var dvalue = (config.dvalue != null) ? app.time.after(config.dvalue) : app.time.now();
               return '<input class="form-control m5 datetime" type="text" name="' + config.name 
                   + '" placeholder = "' + config.placeholder + '" value="' + dvalue + '"/>';
-                  
+          case 'textarea':
+              var dvalue = (config.dvalue != null) ? config.dvalue : '';
+              var params = {
+                name:config.name,
+                value:dvalue,
+                height:( config.height || 120 )
+              };
+              var tpl = '<textarea class="form-control" name="{name}" style="height:{height}px">{value}</textarea>';
+              return tplstr(tpl,params);
+          case 'select':
+              var tpl = '<select class="form-control" name="{name}">{options}</select>';
+              var item_tpl = '<option value="{value}">{text}</option>';
+              var item_html = '';
+              for(var k in  config.items){
+                  var p = {
+                     value:k,
+                     text:config.items[k] 
+                  };
+                  item_html += tplstr(item_tpl,p); 
+              }
+              var params = {
+                 name:config.name
+                 ,options:item_html
+              }
+              return tplstr(tpl,params);
           
       }
   }
@@ -101,7 +125,7 @@ var control = {
       for(var i = 0 , j = forms.length ; i < j ; i++){
           var tpl = '<div class="form-group"> '
                 + '<label class="col-sm-2  control-label" for="id-domain">{label}</label> '
-                + '<div class="col-sm-4"> {control}</div> '
+                + '<div class="col-sm-6"> {control}</div> '
                 + '<div class="col-sm-2 "> </div> '
                 + '</div>';
           var params = {
