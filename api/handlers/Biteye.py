@@ -2,6 +2,8 @@
 
 import Base
 import Util
+import datetime
+import time
 
 @Base.RestMethod
 class Sample(Base.RestBaseHandler):
@@ -47,7 +49,10 @@ class SampleQuery(Base.RestBaseHandler):
     def post(self):
         d = []
         for k in range(0,100):
-            item = {'id':k,'name':'name'+str(k),'value':k + 100,'user':'biteye'}
+            if k == 30 :
+                time.sleep(1)
+            now = datetime.datetime.strftime(datetime.datetime.now(),"%b-%d-%y %H:%M:%S")
+            item = {'id':k,'name':'name'+str(k),'value':k + 100,'user':'biteye','time':now}
             d.append(item)
         i = {'have':True,'data':d}
         self.echo_message(i)

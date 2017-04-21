@@ -118,8 +118,8 @@ var control = {
           'action' : api
           ,'method':method
       };
-      var html = '<form class="form-horizontal mform" action="{action}" method="{method}">{fields}{submit}';
-      html += '</form>';
+
+      var html = '<form class="form-horizontal mform" action="{action}" method="{method}">{fields}{submit}</form>';
 
       var fields_html = '';
       for(var i = 0 , j = forms.length ; i < j ; i++){

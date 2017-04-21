@@ -43,7 +43,7 @@ var config = {
             ,{ type:'txt', name:'name',placeholder:'name' }
             ,{ type:'txt', name:'value',placeholder:'value' }
           ]
-          ,leg:['name','user','value']
+          ,leg:['name','user','value','time']
           ,api:wrapper('sample/query')
       }
       ,sample_V_create:{
