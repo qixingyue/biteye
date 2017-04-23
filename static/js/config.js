@@ -57,6 +57,15 @@ var config = {
           ]
           ,submitBack:'?m=sample&a=query'
       }
+      ,sample_V_charts:{
+          type:'charts'
+          ,charts:[
+            {type:'pie',api:wrapper('data/pie')}
+            ,{type:'line',api:wrapper('data/line')}
+            ,{type:'bar',api:wrapper('data/bar')}
+            ,{type:'scatter',api:wrapper('data/point')}
+          ]
+      }
   }
   ,home_page:'?m=index&a=about'
   ,default_message:'Hello world, Keep Calm And Carry On!'

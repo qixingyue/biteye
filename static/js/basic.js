@@ -53,6 +53,10 @@ var basic = {
       control.createPage(config.forms,config.api,config.method);
   }
 
+  ,renderPagecharts(config,me){
+      control.createCharts(config.charts);
+  }
+
 };
  
 if(app.cookie.get("token") == null){

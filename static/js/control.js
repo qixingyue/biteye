@@ -141,6 +141,66 @@ var control = {
       jsecho(html,params);
   }
 
+  ,createCharts:function(charts){
+
+      var charts_html = "";
+      var later_js = [];
+
+      for(var i = 0 , j = charts.length ; i < j ; i++){
+          var item = charts[i];
+          var url = item.api;
+          var type = item.type;
+          var _id = app.id();
+          var params = {
+                width: item.width || 528
+                ,height: item.height || 400
+                ,id:_id
+          };
+          charts_html += tplstr("<div id='{id}' class='chart_item' style='width:{width}px;height:{height}px'></div>",params);
+          var renderHandler = function(config,id){
+
+              return function(){
+                  var _item = config;
+                  var _id = id;
+                  var _title = config.title || 'biteye chart ';
+                  var _name = config.name || 'name'
+                  net.loadChart(_item.api,{ok:function(x_data){
+                      var xx_data = x_data.data;
+                      switch(_item.type) {
+                          case 'line':
+                          case 'bar':
+                          case 'scatter':
+                            var data = {
+                                title:_title,
+                                showx:xx_data.showx,
+                                ydata:xx_data.ydata
+                            }
+                            var m = 'create' + _item.type.upperFirst() ;
+                            chart[m](_id,data);
+                            break;
+                          case 'pie':
+                            var data = {
+                                title:_title,
+                                name:_name,
+                                ydata:xx_data.ydata
+                            }
+                            chart.createPie(_id,data);
+                      }
+                  }});
+              }
+          
+          }
+          later_js.push(renderHandler(item,_id));
+      }
+      
+      document.write(charts_html);
+      for(var i = 0 , j = later_js.length; i < j ; i++){
+          var fn = later_js[i];
+          fn();
+      }
+  
+  }
+
   ,showData:function(data,config){
       $("#dataShow").html("");
       var data = data || [];

@@ -2,13 +2,18 @@
 
 var app = {
 
-  _module:null
+  _id:1
+  ,_module:null
   ,_action:null
   ,_page_id:null
   ,_queryArr:[]
   ,_pageConfig:[]
   ,search:function(){
     return window.location.search; 
+  }
+
+  ,id:function(){
+       return "autoid_" + ( this._id++ ); 
   }
 
   ,queryArr:function(){

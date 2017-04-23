@@ -1,8 +1,26 @@
 ;;(function(){
 
+String.prototype.tpl = function(params){
+    params = params || {};
+    var str = this;
+    for(name in params){
+        str = str.replace('{' + name + '}',params[name]);
+    } 
+    return str;
+};
+
+String.prototype.upperFirst = function(num=1){
+    var xf = this.substr(0,num);
+    xf = xf.toUpperCase();
+    return xf + this.substr(num);
+};
+
+
+
+
 window.window_export = function(name,fn){
   window[name] = fn;
-  if(fn.onPageLoad != null){
+  if(fn != null && fn.onPageLoad != null){
     $(fn.onPageLoad); 
   }
 };

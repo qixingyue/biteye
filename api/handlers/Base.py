@@ -28,6 +28,11 @@ class RestBaseHandler(tornado.web.RequestHandler):
         }
         self.write(json.dumps(info))
 
+    def echo_data(self,data):
+        i = {'have':True,'data':data}
+        self.echo_message(i)
+
+
 http_server = None
 application = False
 

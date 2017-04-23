@@ -52,9 +52,48 @@ class SampleQuery(Base.RestBaseHandler):
             if k == 30 :
                 time.sleep(1)
             now = datetime.datetime.strftime(datetime.datetime.now(),"%b-%d-%y %H:%M:%S")
-            item = {'id':k,'name':'name'+str(k),'value':k + 100,'user':'biteye','time':now}
+            item = {'id':k,'name':'name'+str(Util.RAND()),'value':Util.RAND(),'user':'biteye','time':now}
             d.append(item)
-        i = {'have':True,'data':d}
-        self.echo_message(i)
+        self.echo_data(d)
+
+
+@Base.RestMethod
+class SampleChart(Base.RestBaseHandler):
+
+    __url__ = '/data/(.+)'
+
+    def _linebarpointdata(self):
+        d = {}
+        d['showx'] = ['SampleA','SampleB','SampleC','SampleD','SampleE']
+        d['ydata'] = [
+            {'name':'Y0','realdata':[Util.RAND(),Util.RAND(),Util.RAND(),Util.RAND(),Util.RAND()]},
+            {'name':'Y1','realdata':[Util.RAND(),Util.RAND(),Util.RAND(),Util.RAND(),Util.RAND()]},
+            {'name':'Y2','realdata':[Util.RAND(),Util.RAND(),Util.RAND(),Util.RAND(),Util.RAND()]}
+        ]
+        return d
+
+    def _pie_data(self):
+        d = {}
+        d['ydata'] = [
+            {'name':"SampleA" , 'value': Util.RAND()}
+            ,{'name':"SampleB" , 'value': Util.RAND()}
+            ,{'name':"SampleC" , 'value': Util.RAND()}
+            ,{'name':"SampleD" , 'value': Util.RAND()}
+            ,{'name':"SampleE" , 'value': Util.RAND()}
+            ,{'name':"SampleF" , 'value': Util.RAND()}
+        ]
+        return d;
+
+
+    def get(self,_type):
+
+        if _type == 'pie':
+            self.echo_data(self._pie_data())
+        elif _type == 'line':
+            self.echo_data(self._linebarpointdata())
+        elif _type == 'bar':
+            self.echo_data(self._linebarpointdata())
+        elif _type == 'point':
+            self.echo_data(self._linebarpointdata())
 
 

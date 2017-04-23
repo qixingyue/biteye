@@ -34,6 +34,21 @@ var net = {
         });
     }
 
+    ,loadChart:function(url,handlers){
+            var postQuery = handlers.ok || function(){};
+            var bad_handler = handlers.bad|| function(data){
+                console.log(data);
+                alert(data.message);
+            };
+            app.get(url,function(data){
+                if(data.have == true){
+                    postQuery(data); 
+                } else {
+                    bad_handler(data);
+                }
+            });
+    }
+
 };
 
 window_export("net",net);
