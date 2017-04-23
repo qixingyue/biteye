@@ -8,3 +8,7 @@ def MD5(str):
 
 def RAND(f=0,t=1000):
     return random.randint(f, t)  
+
+def Rstring(l):
+    return "".join(random.sample('abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHKJKLMNOPQRSTUVWXYZ',l))
+
