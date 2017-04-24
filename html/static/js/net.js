@@ -1,5 +1,9 @@
 ;;;(function(){
 
+
+/***
+ * some net function called by <page.js>
+*/
 var net = {
 
     login:function(u,p,handlers = {}){

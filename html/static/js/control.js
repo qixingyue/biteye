@@ -1,5 +1,8 @@
 ;;;(function(){
 
+/*
+ * some html document.write and then add handler
+ */
 var control = {
 
   jsecho:function(message,params = false){

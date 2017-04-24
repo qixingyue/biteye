@@ -1,5 +1,26 @@
 ;;(function(){
 
+/***
+ *
+ * some useful function about url,
+ * parse querystring and so on.
+ *
+ * id gettter.
+ * _module querystring m value , default index
+ * _action querystring a value , default about
+ * _pageConfig have page config content , valued by <module>V<action>
+ *
+ * logout wherever you are call this can logout clear cookie .
+ * endwith if string endwith some substr
+ * lazyLoad load script by js after load execute some function
+ *
+ * post get _preAjaxHandler ajax wrapper method
+ *
+ * cookie function cookie.get cookie.set cookie.remove
+ *
+ * time function now after formate
+ *
+ */
 var app = {
 
   _id:1
@@ -32,13 +53,11 @@ var app = {
   }
 
   ,init:function(){
-      if(this.endwith(location.pathname,"basic.html")) {
         this._queryArr = this.queryArr();
         this._module = this._queryArr['m'] || 'index';
         this._action = this._queryArr['a'] || 'about';
         this._page_id = this._module + '_V_' + this._action;
         this._pageConfig = config.page_config[this._page_id] || { type:'info', message:config.default_message};
-      }
   }
 
   ,logout:function(){
@@ -56,6 +75,9 @@ var app = {
       script.onload = onLoadFn;
       document.body.appendChild(script);
   }
+
+
+
   ,post(url,data,fnHandler){
       var me = this;
       $.ajax({
@@ -65,6 +87,7 @@ var app = {
         ,success:me._preAjaxHandler(fnHandler)
       });
   }
+ 
   ,get(url,fnHandler){
       var me = this;
       $.ajax({
