@@ -7,7 +7,8 @@ var wrapper = function(u){
 }
 
 var config = {
-  api:{
+  appname:'biteye'
+  ,api:{
       'login':wrapper('api/login')
   }
   ,modules:{
@@ -72,5 +73,7 @@ var config = {
 };
 
 window_export("config",config);
+var o_title = document.getElementsByTagName('title')[0].innerHTML.replace("{appname}",config.appname);
+document.getElementsByTagName('title')[0].innerHTML = o_title;
 
 })();

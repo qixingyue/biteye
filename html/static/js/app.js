@@ -114,14 +114,6 @@ var app = {
   
   }
 
-  ,charts:{
-
-      createPie(data,sel){
-          
-      }
-  
-  }
-
   ,onPageLoad:function(){
       if($.fn.jeDate != null) {
           $("input.datetime").jeDate(); 
