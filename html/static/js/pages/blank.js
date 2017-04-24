@@ -3,7 +3,7 @@
 var blank = {
 
     onPageLoad:function(){
-        alert("Ok blank page!"); 
+        app.setPageTitle("Blank Page Loaded! --- {appname}");
     }
 
 };

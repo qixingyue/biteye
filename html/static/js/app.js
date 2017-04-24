@@ -199,8 +199,15 @@ var app = {
              if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
          return fmt;
      }
-
   
+  }
+
+  ,setPageTitle:function(t){
+    var title_dom = document.getElementsByTagName('title')[0];
+    if  (title_dom){
+      var o_title = t.replace("{appname}",config.appname);
+      title_dom.innerHTML = o_title;
+    }
   }
 
 };

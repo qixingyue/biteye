@@ -73,7 +73,9 @@ var config = {
 };
 
 window_export("config",config);
-var o_title = document.getElementsByTagName('title')[0].innerHTML.replace("{appname}",config.appname);
-document.getElementsByTagName('title')[0].innerHTML = o_title;
+
+
+
+
 
 })();
