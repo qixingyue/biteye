@@ -15,8 +15,11 @@ String.prototype.upperFirst = function(num=1){
     return xf + this.substr(num);
 };
 
-
-
+function extend(obj,ext){
+    for(var k in ext){
+        obj[k] = ext[k];
+    }
+}
 
 window.window_export = function(name,fn){
   window[name] = fn;
@@ -71,5 +74,7 @@ window_export('usecss',function( names , is_theme = false){
 window_export('static_dir',function(static_dir){
   static_root = static_dir;
 });
+
+window_export('extend',extend);
 
 })();

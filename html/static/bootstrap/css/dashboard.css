@@ -169,3 +169,10 @@ span.fa {
 .mform .m5{
     margin:0px;
 }
+
+.chart_item{
+    background-color:#EEE;
+    border-radius:3px;
+    float:left;
+    margin:2px;
+}
