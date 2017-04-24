@@ -26,3 +26,8 @@ static/js/first.js modify static_root , make it your own static dir
 * ./echo_supervisor.sh  
 
  get these supervisor config content 
+
+* listen port
+
+  api port define in api/api.py  <default 8080>
+  page port like python -m SimpleHTTPServer default is 8000
