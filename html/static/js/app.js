@@ -27,6 +27,7 @@ var app = {
   ,_module:null
   ,_action:null
   ,_page_id:null
+  ,_htmlname:null
   ,_queryArr:[]
   ,_pageConfig:[]
   ,search:function(){
@@ -58,6 +59,7 @@ var app = {
         this._action = this._queryArr['a'] || 'about';
         this._page_id = this._module + '_V_' + this._action;
         this._pageConfig = config.page_config[this._page_id] || { type:'info', message:config.default_message};
+        this._htmlname = location.pathname.substr(location.pathname.lastIndexOf("/") + 1);
   }
 
   ,logout:function(){
