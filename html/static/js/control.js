@@ -266,6 +266,11 @@ var control = {
 
 };
 
+if(window['hook'] && hook != null && hook.ext != null && hook.ext.control != null){
+    control = hook.ext.control(control);
+}
+
+
 window_export("control",control);
 window_export("jsecho",control.jsecho);
 window_export("tplstr",control.tplstr);

@@ -24,13 +24,6 @@ var hook = {
         usejs('hooks/' + htmlname.replace(".html",""));
     }
 
-    ,filter:function(name){
-        if(this.ext[name] == null){
-            return name; 
-        }
-        return this.ext[name].apply(this,this.arguments_arr(arguments,1));
-    }
-    
     ,ext:{}
 
 };
