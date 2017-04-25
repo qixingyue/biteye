@@ -257,6 +257,13 @@ var control = {
       jsecho(app.cookie.get("user"));
   }
 
+  ,hello_world:function(app){
+      var params = {
+        'app': (app || config.appname)
+      }
+      this.jsecho('<h2>Hello , Welcome use {app}</h2>',params);
+  }
+
 };
 
 window_export("control",control);
