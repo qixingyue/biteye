@@ -34,5 +34,5 @@ static/js/first.js modify static_root , make it your own static dir
 
 ## some pages
 
-* [login](biteye/html/pages/login.html)
-* [blank](biteye/html/pages/blank.html)
+* [login](http://qixingyue.github.io/biteye/html/pages/login.html)
+* [blank](http://qixingyue.github.io/biteye/html/pages/blank.html)
