@@ -23,6 +23,10 @@ static/text_icon.png
 
 static/js/first.js modify static_root , make it your own static dir
 
+* hook function 
+
+hooks/<html_name> is loaded no matter if exist , when hook.js is loaded .
+
 * ./echo_supervisor.sh  
 
  get these supervisor config content 
