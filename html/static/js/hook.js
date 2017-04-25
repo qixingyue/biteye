@@ -20,7 +20,8 @@ var hook = {
     ,_read_me:'hook function called!'
 
     ,_init:function(){
-        usejs('hooks/sample');
+        var htmlname = location.pathname.substr(location.pathname.lastIndexOf("/") + 1);
+        usejs('hooks/' + htmlname.replace(".html",""));
     }
 
     ,filter:function(name){
