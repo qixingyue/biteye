@@ -10,10 +10,17 @@
 usecss("bootstrap.min",true);
 usejs("jquery-1.10.2.min",true);
 usejs("config|hook|app|control|net|pages/blank");
+usecss('blank');
 </script>
 </head>
 <body>
-    <script>control.hi_blank();</script>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <script>control.hi_blank();</script>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 

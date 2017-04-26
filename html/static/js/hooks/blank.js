@@ -8,7 +8,15 @@ hook.ext.hi = function(a,b,c){
 hook.ext.control = function(c){
 
     c.hi_blank = function(){
-        c.jsecho("<h4 style='color:gray;margin:50px;'>Hi , traced from hook function !</h4>");
+        var types = ['success','info','warning','danger'];
+        for(var t in types){
+            c.simplePanel("Hi , traced from hook function !",types[t]);
+        }
+
+        var  types = ['default','primary','success','info','warning','danger'];
+        for(var t in types){
+            c.simpleLabel(' Find The Big World ! ',types[t]);
+        }
     }
 
     return c;

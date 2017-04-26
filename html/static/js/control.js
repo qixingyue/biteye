@@ -264,6 +264,25 @@ var control = {
       this.jsecho('<h2>Hello , Welcome use {app}</h2>',params);
   }
 
+  // type ['success','info','warning','danger'];
+  ,simplePanel:function(message,type='info'){
+      var params = {
+         message:message 
+         ,type:type
+      };
+      this.jsecho('<div class="alert alert-{type}" role="alert">{message}</div>',params);
+  }
+
+  // type : ['default','primary','success','info','warning','Danger']
+  ,simpleLabel:function(text,type='default'){
+      var params = {
+         text:text 
+         ,type:type
+      }
+      this.jsecho('<span class="label label-{type}">{text}</span>',params);
+     
+  }
+
 };
 
 if(window['hook'] && hook != null && hook.ext != null && hook.ext.control != null){
