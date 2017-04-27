@@ -2,6 +2,7 @@
 
 import tornado.web
 import tornado.httpserver
+import tornado.options
 import json
 
 client_domain = "http://localhost:8000"
@@ -41,6 +42,7 @@ def import_handlers():
 
 def RestInit(port):
     global application
+    tornado.options.parse_command_line()
     settings = {'debug':True}
     application = tornado.web.Application([],**settings)
     import_handlers()
