@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+<link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico" />
+<title></title>
+<script src="../static/js/first.js"></script>
+<script type="text/javascript">
+usecss("bootstrap.min",true);
+usejs("jquery-1.10.2.min",true);
+usejs("dropzone|config|app|control|net");
+usecss('dropzone');
+</script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+
+                <form action="/upload" class="dropzone needsclick dz-clickable" id="demo-upload">
+                    <div class="dz-message needsclick">
+                        Drop files here or click to upload.<br>
+                        <p class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</p>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
