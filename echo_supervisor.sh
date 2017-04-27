@@ -5,7 +5,7 @@ p=$(pwd)
 echo "
 
 [program:biteye]
-command = python -u ${p}/api/api.py
+command = python -u ${p}/api/tornado/api.py
 user = root
 autostart = true
 autorestart = true
