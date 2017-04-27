@@ -40,3 +40,4 @@ hooks/<html_name> is loaded no matter if exist , when hook.js is loaded .
 
 * [login](http://qixingyue.github.io/biteye/html/pages/login.html)
 * [blank](http://qixingyue.github.io/biteye/html/pages/blank.html)
+* [dropzone](http://qixingyue.github.io/biteye/html/pages/dropzone.html)
