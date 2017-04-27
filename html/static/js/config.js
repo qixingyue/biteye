@@ -10,6 +10,7 @@ var config = {
   appname:'biteye'
   ,api:{
       'login':wrapper('api/login')
+      ,'upload':wrapper('api/upload')
   }
   ,modules:{
       index:{

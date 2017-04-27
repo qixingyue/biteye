@@ -39,6 +39,9 @@ function spath(type,is_theme=false){
 var loaded_js = {} , loaded_css = {};
 static_root = '../static/';
 
+window_export('__hook_nopage',false);
+
+//html can use hook_nopage will not autoload hook js
 window_export('usejs',function( names , is_theme = false){
   var path = spath('js/',is_theme);
   if(typeof names == "string"){
@@ -46,6 +49,10 @@ window_export('usejs',function( names , is_theme = false){
   } 
   for(var index in names){
     var name = names[index];
+    if(name == 'hook_nopage') {
+        name = 'hook' ;
+        window_export('__hook_nopage',true);
+    }
     if(name in loaded_js && loaded_js[name] == is_theme) {
       document.write('');  
     } else {

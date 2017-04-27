@@ -282,6 +282,26 @@ var control = {
   }
 
 
+  ,dropZone:function(url,message,sub_message,token = ''){
+      
+      var id = app.id();
+      var tpl = '<form method="post" action="{url}" class="dropzone needsclick dz-clickable" id="{id}" enctype="multipart/form-data">'
+          + '<div class="dz-message needsclick">'
+          + '<span class="shaddow">{message}</span><br>'
+          + '<p class="note needsclick shaddow">({sub_message})</p>'
+          + '<input type="hidden" name="token" value="{token}"/>'
+          + '</div>'
+          + '</form>';
+      var params = {
+          url:url,
+          id:id,
+          message:message,
+          sub_message:sub_message,
+          token:token
+      }
+      this.jsecho(tpl,params);
+  }
+
 };
 
 if(window['hook'] && hook != null && hook.ext != null && hook.ext.control != null){

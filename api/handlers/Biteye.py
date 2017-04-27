@@ -97,3 +97,14 @@ class SampleChart(Base.RestBaseHandler):
             self.echo_data(self._linebarpointdata())
 
 
+@Base.RestMethod
+class Upload(Base.RestBaseHandler):
+
+    __url__ = '/api/upload'
+
+    def post(self):
+        self.echo_message("Ok , finished!")
+
+    def options(self):
+        pass
+
