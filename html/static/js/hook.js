@@ -21,8 +21,10 @@ var hook = {
     ,_read_me:'hook function called!'
 
     ,_init:function(){
-        var htmlname = location.pathname.substr(location.pathname.lastIndexOf("/") + 1);
-        usejs('hooks/' + htmlname.replace(".html",""));
+        if(__hook_nopage == false) {
+            var htmlname = location.pathname.substr(location.pathname.lastIndexOf("/") + 1);
+            usejs('hooks/' + htmlname.replace(".html",""));
+        }
     }
 
     ,ext:{}

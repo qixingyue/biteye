@@ -240,7 +240,6 @@ var control = {
           return tplstr('<li> <a href="{link}">{name}</a> </li>',params);
       }
 
-
       var module_link = app._queryArr['m'] || 'index';
       var module_name = config.modules[module_link].name;
       var action = app._queryArr['a'] || 'about';
@@ -280,8 +279,8 @@ var control = {
          ,type:type
       }
       this.jsecho('<span class="label label-{type}">{text}</span>',params);
-     
   }
+
 
 };
 
