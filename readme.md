@@ -3,9 +3,9 @@
 ## some infomation
 
 * api server:
+./echo_supervisor.sh 
+can get two split servers tornado or php 
 
-default api server run at localhost:8080 
-python api/api.py
 
 * modify static pages running domain 
 
