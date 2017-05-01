@@ -5,7 +5,9 @@
  */
 var control = {
 
-  jsecho:function(message,params = false){
+   _toggle:false
+
+  ,jsecho:function(message,params = false){
     params = params || [];
     document.write(this.tplstr(message,params));  
   }
@@ -33,6 +35,26 @@ var control = {
         //jsecho("<li class='{cssclass}'><a href='?m={name}'><span class='fa fa-th-large fa-fw'></span> {text}</a></li>",params);
         jsecho("<li class='{cssclass}'><a href='?m={name}'>{text}</a></li>",params);
       }
+  }
+
+  ,toggleLeftMenu:function(){
+      var html = '<li><a href="javascript:;" id="toggleLeftMenu"> <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> </a> </li>';
+      this.jsecho(html); 
+      $("#toggleLeftMenu").click(control._toggleNav);
+  }
+
+  ,_toggleNav:function(){
+
+      if(this._toggle){
+          $("div.sidebar").animate({"width":"150px","padding":"10px"});
+          $("div.main").animate({"margin-left":"120px","padding-left":"40px"});
+      }else{
+          $("div.sidebar").animate({"width":"0px","padding":"0px"});
+          $("div.main").animate({"margin-left":"0px","padding-left":"20px"});
+      }
+
+      this._toggle = ! this._toggle;
+
   }
   
   ,left_menu:function(){
