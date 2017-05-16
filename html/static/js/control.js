@@ -324,6 +324,16 @@ var control = {
       this.jsecho(tpl,params);
   }
 
+  ,items_render:function(items,tpl,split="",pre="",post="") {
+      var h = pre;
+      for(var ii = 0 , jj = items.length; ii < jj ; ii++) {
+          h += tpl.tpl(items[ii]) + split; 
+      }
+      h = h.substring(0,h.length - split.length);
+      h += post;
+      this.jsecho(h);
+  }
+
 };
 
 if(window['hook'] && hook != null && hook.ext != null && hook.ext.control != null){

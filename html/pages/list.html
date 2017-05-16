@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+<link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico" />
+<title></title>
+<script src="../static/js/first.js"></script>
+<script type="text/javascript">
+usecss("bootstrap.min",true);
+usejs("jquery-1.10.2.min",true);
+usejs("config|hook_nopage|app|control|net|pages/blank");
+</script>
+<style>
+    div.item{
+        margin:30px; 
+    }
+</style>
+</head>
+<body>
+    <div class="container-fluid">
+        <script>
+            var items = [
+                {'title':'hello world','link':'http://baidu.com','description':'this is basic list world item'}
+                ,{'title':'hello world','link':'http://baidu.com','description':'this is basic list world item'}
+                ,{'title':'hello world','link':'http://baidu.com','description':'this is basic list world item'}
+            ];
+            var tpl = '<li><div class="item"><h4><a href="{link}">{title}</a></h4><p>{description}</p></div></li>'; 
+            var split = '';
+            var pre = '<ul>';
+            var post = '</ul>';
+            control.items_render(items,tpl,split,pre,post); 
+        </script>
+    </div>
+</body>
+</html>
+
