@@ -15,6 +15,16 @@ String.prototype.upperFirst = function(num=1){
     return xf + this.substr(num);
 };
 
+function endn(s){
+    s = s || "";
+    return s + "\n";
+}
+
+function endnn(s){
+    s = s || "";
+    return s + "\n\n";
+}
+
 function extend(obj,ext){
     for(var k in ext){
         obj[k] = ext[k];
@@ -83,5 +93,7 @@ window_export('static_dir',function(static_dir){
 });
 
 window_export('extend',extend);
+window_export('endn',endn);
+window_export('endnn',endn);
 
 })();
