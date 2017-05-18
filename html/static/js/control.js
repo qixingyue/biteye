@@ -334,6 +334,19 @@ var control = {
       this.jsecho(h);
   }
 
+  ,hifooter:function(message){
+      var year = (new Date()).getYear() + 1900;
+      var message = message.tpl({"year":year});
+      this.jsecho('<footer class="clearfix"> <p class="pull-right">{message}</p> </footer>',{message:message}); 
+  }
+
+  ,markdown:function(md_text){
+      if(window['markdown']){
+        this.jsecho(markdown.toHTML(md_text));  
+      } else {
+      }
+  }
+
 };
 
 if(window['hook'] && hook != null && hook.ext != null && hook.ext.control != null){

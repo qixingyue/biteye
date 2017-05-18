@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+<link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico" />
+<title>Markdown demo</title>
+<script src="../static/js/first.js"></script>
+<script type="text/javascript">
+usecss("bootstrap.min",true);
+usejs("jquery-1.10.2.min",true);
+usejs("config|hook_nopage|app|control|net|markdown.min");
+</script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <script>
+                var md_text = "";
+                    md_text += endn("#world");
+                    md_text += endn("---");
+                    md_text += endn("## simple world");
+                    md_text += endn("* hi list item 1");
+                    md_text += endn("* hi list item 2");
+                    md_text += endn("## simple world");
+                    md_text += endn("1. hi list item 2");
+                    md_text += endnn("2. hi list item 2");
+                    md_text += endn("> 这里是引用内容");
+                    md_text += endnn("> 这里是引用内容");
+                    md_text += endn("*hi list item 2*");
+                    md_text += endn("**hi list item 2**");
+                    md_text += endn();
+                    md_text += endn("pre block");
+                    md_text += endn();
+                    md_text += endn("    #coding=utf-8");
+                    md_text += endn("    import requests");
+                    md_text += endn("    import pyquery");
+                    md_text += endn("    print requests.get(\"http://baidu.com\").text ");
+                    md_text += endn("one line code `echo 'Hello world';` .");
+                    md_text += endn();
+                    md_text += endn("![picture demo](http://tva3.sinaimg.cn/crop.179.0.419.419.180/8d2923e7jw1ejs2ymjwn8j20kt0bpq6e.jpg)");
+                    md_text += endn();
+                    md_text += endn("[hi links](http://weibo.com/348492600)");
+                 console.log(md_text);
+                control.markdown(md_text);
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
